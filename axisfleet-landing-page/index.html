@@ -336,16 +336,20 @@ nav.s{
 
 /* FOOTER */
 footer{background:#0D1117;padding:5rem 5vw 2.5rem;position:relative;z-index:1}
-.ft-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:4rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.05)}
-.ft-logo-r{display:flex;align-items:center;gap:10px;margin-bottom:.8rem}
-.ft-name{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1rem;letter-spacing:-.01em;color:#1A8FD6}
-.ft-slogan{font-size:.82rem;color:rgba(200,196,188,.18);font-style:italic;max-width:240px;line-height:1.7}
-.ft-slogan em{color:rgba(255,107,53,.4)}
-.ft-verse{text-align:center;font-size:.75rem;color:rgba(200,196,188,.13);font-style:italic;line-height:1.9;border-left:1px solid rgba(255,255,255,.04);border-right:1px solid rgba(255,255,255,.04);padding:0 2rem}
-.ft-details{font-family:'JetBrains Mono',monospace;font-size:.56rem;color:rgba(200,196,188,.18);line-height:2.1;text-align:right}
-.ft-bottom{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.54rem;color:rgba(200,196,188,.1)}
-.ft-ig{color:rgba(200,196,188,.18);text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:.8rem;font-size:.56rem;transition:color .2s}
-.ft-ig:hover{color:#FF6B35}
+.ft-inner{max-width:1200px;margin:0 auto}
+.ft-main{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:5rem;padding-bottom:3.5rem;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:2rem}
+.ft-logo-row{display:flex;align-items:center;gap:10px;margin-bottom:1rem}
+.ft-name{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em;color:#F0EDE8}
+.ft-tagline{font-size:.8rem;color:rgba(200,196,188,.2);line-height:1.85;max-width:220px;margin-bottom:1.5rem;font-style:italic}
+.ft-social{display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.08em;color:rgba(200,196,188,.2);text-decoration:none;transition:color .2s}
+.ft-social:hover{color:#FF6B35}
+.ft-col-label{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(200,196,188,.18);margin-bottom:1.2rem}
+.ft-links{display:flex;flex-direction:column}
+.ft-links a{font-size:.85rem;color:rgba(200,196,188,.32);text-decoration:none;padding:.28rem 0;transition:color .2s}
+.ft-links a:hover{color:#F0EDE8}
+.ft-verse-text{font-size:.78rem;color:rgba(200,196,188,.15);line-height:2;font-style:italic;margin-bottom:.7rem}
+.ft-verse-ref{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.08em;color:rgba(255,107,53,.25)}
+.ft-bottom{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.52rem;color:rgba(200,196,188,.1);letter-spacing:.04em}
 
 /* REVEAL */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
@@ -400,10 +404,8 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
   .plat-grid{grid-template-columns:1fr;gap:40px}
   .cap-grid{grid-template-columns:1fr 1fr}
   .how-grid{grid-template-columns:1fr;gap:48px}
-  .ft-grid{grid-template-columns:1fr}
-  .ft-verse{border:none;text-align:left;padding:0}
-  .ft-details{text-align:left}
-  .ft-bottom{flex-direction:column;gap:.5rem}
+  .ft-main{grid-template-columns:1fr;gap:2.5rem}
+  .ft-bottom{flex-direction:column;gap:.5rem;text-align:left}
   .nlinks{display:none}
   .contact-grid{grid-template-columns:1fr}
 }
@@ -677,27 +679,38 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
 
 <!-- FOOTER -->
 <footer>
-  <div class="ft-grid">
-    <div>
-      <div class="ft-logo-r">
-        <svg width="22" height="22" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><circle cx="250" cy="512" r="70" fill="#FF6B35"/><rect x="400" y="477" width="400" height="70" rx="35" fill="#FF6B35"/></svg>
-        <div class="ft-name">AxisFleet (Pty) Ltd</div>
+  <div class="ft-inner">
+    <div class="ft-main">
+      <div class="ft-brand">
+        <div class="ft-logo-row">
+          <svg width="20" height="20" viewBox="0 0 1024 1024"><circle cx="250" cy="512" r="70" fill="#FF6B35"/><rect x="400" y="477" width="400" height="70" rx="35" fill="#FF6B35"/></svg>
+          <span class="ft-name">AxisFleet</span>
+        </div>
+        <div class="ft-tagline">Powering the people<br>that move the world.</div>
+        <a href="https://instagram.com/axisfleetsa" target="_blank" class="ft-social">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @axisfleetsa
+        </a>
       </div>
-      <div class="ft-slogan"><em>Powering the people that move the world.</em></div>
-      <a href="https://instagram.com/axisfleetsa" target="_blank" class="ft-ig">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        @axisfleetsa
-      </a>
+      <div>
+        <div class="ft-col-label">Navigate</div>
+        <div class="ft-links">
+          <a href="#platform">Platform</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#how">How It Works</a>
+          <a href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-col-label">Foundation</div>
+        <div class="ft-verse-text">"He will watch over your coming and going, both now and forevermore."</div>
+        <div class="ft-verse-ref">Psalm 121:8</div>
+      </div>
     </div>
-    <div class="ft-verse">"He will watch over your coming and going,<br>both now and forevermore."<br>Psalm 121:8</div>
-    <div class="ft-details">
-      axisfleetsa@gmail.com · 064 547 6573<br>
-      axisfleet.co.za
+    <div class="ft-bottom">
+      <span>© 2026 AxisFleet (Pty) Ltd &nbsp;·&nbsp; Reg: 2026/249788/07</span>
+      <span>STEADFAST</span>
     </div>
-  </div>
-  <div class="ft-bottom">
-    <span>© 2026 AxisFleet (Pty) Ltd — All rights reserved</span>
-    <span>Steadfast · Built to last</span>
   </div>
 </footer>
 
