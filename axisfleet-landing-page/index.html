@@ -317,22 +317,18 @@ nav.s{
 .verse-ref{font-size:.8rem;color:rgba(255,255,255,.55);letter-spacing:.06em;position:relative;z-index:1}
 
 /* CTA */
-.cta-sec{background:#1C1A16;padding:120px 5vw;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;z-index:1}
-.cta-sec::before{content:'';position:absolute;top:50%;left:50%;width:600px;height:300px;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(26,143,214,.04),transparent 70%);pointer-events:none}
-.ct-card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:3.5rem;width:100%;max-width:500px;text-align:center;position:relative;z-index:1;box-shadow:0 24px 64px rgba(0,0,0,.22)}
-.ct-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#FF6B35,#C8922A,#1A8FD6);border-radius:20px 20px 0 0;pointer-events:none}
-.ct-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.2);padding:.28rem .85rem;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:#FF6B35;margin-bottom:1.2rem}
-.ct-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:#FF6B35;animation:pulse 2s infinite;flex-shrink:0}
-.ct-h{font-family:'Clash Display',sans-serif;font-weight:700;font-size:clamp(1.75rem,3.2vw,2.4rem);line-height:1.15;letter-spacing:-.022em;color:#0D1B2A;margin-bottom:1rem}
+.cta-sec{background:#1C1A16;padding:130px 5vw;text-align:center;position:relative;overflow:hidden;z-index:1}
+.cta-sec::before{content:'';position:absolute;top:50%;left:50%;width:700px;height:400px;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(26,143,214,.05),transparent 65%);pointer-events:none}
+.ct-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,107,53,.55);margin-bottom:2rem;display:flex;align-items:center;justify-content:center;gap:9px;position:relative;z-index:1}
+.ct-label::before{content:'';width:4px;height:4px;border-radius:50%;background:#FF6B35;animation:pulse 2s infinite;flex-shrink:0}
+.ct-h{font-family:'Clash Display',sans-serif;font-weight:700;font-size:clamp(2.4rem,5vw,4rem);line-height:1.08;letter-spacing:-.03em;color:#F0EDE8;margin-bottom:1.4rem;position:relative;z-index:1}
 .ct-h em{font-style:normal;color:#FF6B35}
-.ct-p{font-size:1.05rem;color:#334155;line-height:1.75;max-width:340px;margin:0 auto;font-weight:500}
-.ct-divider{height:1px;background:rgba(0,0,0,.07);margin:2rem 0}
-.ct-btn{display:block;background:linear-gradient(135deg,#C8922A,#E8B84B);color:#0D1B2A;border:none;border-radius:100px;padding:1rem 2rem;font-family:'Cabinet Grotesk',sans-serif;font-size:.95rem;font-weight:800;cursor:none;transition:transform .2s,box-shadow .2s;text-decoration:none;letter-spacing:.03em;margin-bottom:1.4rem}
-.ct-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,146,42,.4)}
-.ct-icons{display:flex;align-items:center;justify-content:center;gap:.7rem}
-.ct-ic{width:42px;height:42px;border-radius:50%;background:#F8FAFC;border:1px solid #E2E8F0;display:flex;align-items:center;justify-content:center;color:#94A3B8;text-decoration:none;transition:all .2s;cursor:none}
-.ct-ic:hover{background:#0D1B2A;border-color:#0D1B2A;color:#fff;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.15)}
-.ct-note{font-family:'JetBrains Mono',monospace;font-size:.54rem;color:#CBD5E1;margin-top:1.2rem;line-height:1.7;letter-spacing:.02em}
+.ct-p{font-size:1.05rem;color:rgba(200,196,188,.45);line-height:1.7;margin:0 auto 3rem;max-width:400px;position:relative;z-index:1}
+.ct-btn{display:inline-block;background:linear-gradient(135deg,#C8922A,#E8B84B);color:#0D1B2A;border:none;border-radius:100px;padding:1rem 2.4rem;font-family:'Cabinet Grotesk',sans-serif;font-size:.95rem;font-weight:800;cursor:none;transition:transform .2s,box-shadow .2s;text-decoration:none;letter-spacing:.02em;margin-bottom:3rem;position:relative;z-index:1}
+.ct-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(200,146,42,.35)}
+.ct-icons{display:flex;align-items:center;justify-content:center;gap:.75rem;position:relative;z-index:1}
+.ct-ic{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(200,196,188,.3);text-decoration:none;transition:all .2s;cursor:none}
+.ct-ic:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#F0EDE8;transform:translateY(-2px)}
 
 /* FOOTER */
 footer{background:#0D1117;padding:5rem 5vw 2.5rem;position:relative;z-index:1}
@@ -656,24 +652,20 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
 
 <!-- CTA -->
 <section class="cta-sec" id="contact">
-  <div class="ct-card rv">
-    <div class="ct-tag">Get in Touch</div>
-    <h2 class="ct-h">The hardware is proven.<br>The platform is <em>built.</em></h2>
-    <p class="ct-p">All that's left is to connect it to your fleet.</p>
-    <div class="ct-divider"></div>
-    <a href="#" class="ct-btn" onclick="event.preventDefault();openDemoModal()">Request a Walkthrough →</a>
-    <div class="ct-icons">
-      <a href="mailto:axisfleetsa@gmail.com" class="ct-ic" title="Email">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-      </a>
-      <a href="https://wa.me/27645476573" target="_blank" class="ct-ic" title="WhatsApp">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-      </a>
-      <a href="https://instagram.com/axisfleetsa" target="_blank" class="ct-ic" title="Instagram">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
-    </div>
-    <div class="ct-note">axisfleet.co.za</div>
+  <div class="ct-label rv">Get in Touch</div>
+  <h2 class="ct-h rv">The hardware is proven.<br>The platform is <em>built.</em></h2>
+  <p class="ct-p rv">All that's left is to connect it to your fleet.</p>
+  <a href="#" class="ct-btn rv" onclick="event.preventDefault();openDemoModal()">Request a Walkthrough →</a>
+  <div class="ct-icons rv">
+    <a href="mailto:axisfleetsa@gmail.com" class="ct-ic" title="Email">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+    </a>
+    <a href="https://wa.me/27645476573" target="_blank" class="ct-ic" title="WhatsApp">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </a>
+    <a href="https://instagram.com/axisfleetsa" target="_blank" class="ct-ic" title="Instagram">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
   </div>
 </section>
 
