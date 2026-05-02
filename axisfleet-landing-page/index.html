@@ -164,26 +164,19 @@ nav.s{
 
 /* HERO RIGHT */
 .hero-right{position:relative;z-index:2;opacity:0;animation:lfu 1s ease forwards 1.9s}
-#hero3d{width:100%;height:480px;border-radius:20px;display:block}
-.float-cards{position:absolute;inset:0;pointer-events:none}
-.fcard{
-  position:absolute;
-  background:rgba(40,36,30,.88);backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.08);border-radius:14px;
-  padding:12px 16px;box-shadow:0 8px 32px rgba(0,0,0,.4);
+.cycle-wrap{position:relative;width:100%;height:480px;overflow:hidden}
+.cycle-svg{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;z-index:0;pointer-events:none}
+.cb{
+  position:absolute;width:130px;z-index:1;
+  background:rgba(28,24,18,.92);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.08);border-radius:10px;
+  padding:8px 11px;
+  box-shadow:0 4px 20px rgba(0,0,0,.35);
+  transition:border-color .5s ease,box-shadow .5s ease;
 }
-.fcard-1{top:6%;right:4%;animation:fl 6s ease-in-out infinite}
-.fcard-2{bottom:10%;left:2%;animation:fl 6s ease-in-out infinite 2s}
-.fcard-3{top:40%;right:-1%;animation:fl 6s ease-in-out infinite 4s}
-@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.fc-lbl{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(200,196,188,.3);margin-bottom:4px}
-.fc-val{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1.2rem;color:#F0EDE8;line-height:1}
-.fc-sub{font-size:.68rem;color:rgba(200,196,188,.35);margin-top:3px}
-.fc-bar{height:3px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:6px;overflow:hidden}
-.fc-fill{height:100%;border-radius:2px}
-.fc-row{display:flex;align-items:center;gap:7px;margin-bottom:4px}
-.fc-dot-s{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.fc-txt{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(200,196,188,.5)}
+.cb-n{font-family:'JetBrains Mono',monospace;font-size:.42rem;letter-spacing:.14em;color:rgba(200,196,188,.22);line-height:1;margin-bottom:3px}
+.cb-t{font-family:'Clash Display',sans-serif;font-weight:700;font-size:.72rem;color:#F0EDE8;line-height:1.2;letter-spacing:-.01em;margin-bottom:2px}
+.cb-d{font-family:'JetBrains Mono',monospace;font-size:.44rem;color:rgba(200,196,188,.32);letter-spacing:.03em;line-height:1.5}
 
 /* MARQUEE */
 .marquee{background:#0D1B2A;padding:.5rem 0;overflow:hidden;margin:0}
@@ -396,7 +389,7 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
 /* RESPONSIVE */
 @media(max-width:960px){
   .hero{grid-template-columns:1fr;padding-top:120px}
-  #hero3d{height:300px}
+  .cycle-wrap{height:360px}
   .plat-grid{grid-template-columns:1fr;gap:40px}
   .cap-grid{grid-template-columns:1fr 1fr}
   .how-grid{grid-template-columns:1fr;gap:48px}
@@ -474,28 +467,47 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
     </div>
   </div>
   <div class="hero-right">
-    <canvas id="hero3d"></canvas>
-    <div class="float-cards">
-      <div class="fcard fcard-1">
-        <div class="fc-lbl">Axle Load · NTU-441</div>
-        <div class="fc-val" style="color:#EF4444">32.4<span style="font-size:.9rem;font-weight:700;color:#EF4444;font-family:'Clash Display',sans-serif">t</span></div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:.5rem;color:#EF4444;margin-top:1px;letter-spacing:.04em">▲ OVERLOAD · +2.4t</div>
-        <div class="fc-bar" style="margin-top:7px"><div class="fc-fill" style="width:100%;background:linear-gradient(90deg,#C8922A,#EF4444)"></div></div>
+    <div class="cycle-wrap" id="cycle-wrap">
+      <svg class="cycle-svg" id="cycle-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="cb" id="cb1" style="left:calc(50% - 65px);top:5px">
+        <div class="cb-n">01</div>
+        <div class="cb-t">Truck Loaded</div>
+        <div class="cb-d">Loading bay · Zone C</div>
       </div>
-      <div class="fcard fcard-2">
-        <div class="fc-lbl">Live Alert</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:#EF4444;letter-spacing:.05em;font-weight:600;margin-bottom:5px">▲ OVERLOAD · NTU-441</div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:.49rem;color:rgba(200,196,188,.4);line-height:1.9;letter-spacing:.02em">32.4t · Limit 30t · +2.4t<br>Zone C · Loading bay · 07:42</div>
-        <div style="height:1px;background:rgba(255,255,255,.05);margin:6px 0"></div>
-        <div class="fc-row"><div class="fc-dot-s" style="background:#22C55E;box-shadow:0 0 4px rgba(34,197,94,.4)"></div><div class="fc-txt" style="color:rgba(34,197,94,.7)">Driver SMS dispatched</div></div>
+      <div class="cb" id="cb2" style="left:calc(75% - 65px);top:85px">
+        <div class="cb-n">02</div>
+        <div class="cb-t">Sensors Active</div>
+        <div class="cb-d">WLM600 · ±1% accuracy</div>
       </div>
-      <div class="fcard fcard-3">
-        <div class="fc-lbl">Data Stream</div>
-        <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px">
-          <div style="width:5px;height:5px;border-radius:50%;background:#00D4A0;animation:pulse 1.5s infinite;flex-shrink:0"></div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:.52rem;color:#00D4A0;letter-spacing:.1em">LIVE</div>
-        </div>
-        <div style="font-family:'JetBrains Mono',monospace;font-size:.5rem;color:rgba(200,196,188,.4);line-height:1.9;letter-spacing:.03em">07:44:31 · 28.1t<br>62 km/h · Zone A</div>
+      <div class="cb" id="cb3" style="left:calc(87% - 65px);top:201px">
+        <div class="cb-n">03</div>
+        <div class="cb-t">GSM Transmitted</div>
+        <div class="cb-d">Real-time · GPRS link</div>
+      </div>
+      <div class="cb" id="cb4" style="left:calc(75% - 65px);top:333px">
+        <div class="cb-n">04</div>
+        <div class="cb-t">Platform Receives</div>
+        <div class="cb-d">Data stream · live</div>
+      </div>
+      <div class="cb" id="cb5" style="left:calc(50% - 65px);top:388px;border-color:rgba(239,68,68,.2)">
+        <div class="cb-n" style="color:rgba(239,68,68,.4)">05</div>
+        <div class="cb-t" style="color:#EF4444">Overload Detected</div>
+        <div class="cb-d" style="color:rgba(239,68,68,.5)">NTU-441 · 32.4t &#9650; +2.4t</div>
+      </div>
+      <div class="cb" id="cb6" style="left:calc(25% - 65px);top:333px">
+        <div class="cb-n">06</div>
+        <div class="cb-t" style="color:#22C55E">Driver SMS Sent</div>
+        <div class="cb-d">Auto-dispatched · 07:42</div>
+      </div>
+      <div class="cb" id="cb7" style="left:calc(13% - 65px);top:201px">
+        <div class="cb-n">07</div>
+        <div class="cb-t">Dispatcher Notified</div>
+        <div class="cb-d">Live ops dashboard</div>
+      </div>
+      <div class="cb" id="cb8" style="left:calc(25% - 65px);top:85px">
+        <div class="cb-n">08</div>
+        <div class="cb-t">Data Logged</div>
+        <div class="cb-d">NTU-441 · Zone C · 07:42</div>
       </div>
     </div>
   </div>
@@ -896,40 +908,76 @@ const ph=document.querySelector('.phone');if(ph)pio.observe(ph);
   (function render(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.tick();p.draw()});lines();requestAnimationFrame(render)})();
 })();
 
-/* THREE.JS HERO */
+/* CYCLE STORY */
 (function(){
-  const cv=document.getElementById('hero3d');
-  if(!cv||!window.THREE)return;
-  const W=cv.clientWidth,H=cv.clientHeight;
-  const renderer=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
-  renderer.setSize(W,H);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  renderer.setClearColor(0x000000,0);
-  const scene=new THREE.Scene();
-  const cam=new THREE.PerspectiveCamera(60,W/H,.1,100);cam.position.set(0,0,5);
-  scene.add(new THREE.AmbientLight(0xffffff,.4));
-  const dl=new THREE.DirectionalLight(0xFF6B35,1.2);dl.position.set(3,3,3);scene.add(dl);
-  const dl2=new THREE.DirectionalLight(0x1A8FD6,.8);dl2.position.set(-3,-1,2);scene.add(dl2);
-  const nmat=new THREE.MeshPhongMaterial({color:0x1A8FD6,emissive:0x0a3a5a,shininess:80});
-  const wmat=new THREE.MeshPhongMaterial({color:0xFF6B35,emissive:0x6b2a0a,shininess:80});
-  const ngeo=new THREE.SphereGeometry(.12,16,16);
-  const nodes=[];
-  const pos=[[-2.5,.5,0],[-.8,1.2,.3],[.9,.8,-.2],[2.2,1.1,.1],[-2,.8,.4],[0,.3,-.1],[1.5,.2,.3],[2.8,.4,-.2],[-1.5,-.4,.2],[.3,-.6,0],[1.8,-.5,.2],[2.6,-.2,.1],[-2.8,-.2,.3],[-1,-.8,.1],[.8,-1,-.1],[2,-.9,.2]];
-  pos.forEach((p,i)=>{const m=new THREE.Mesh(ngeo,i===2||i===9?wmat:nmat);m.position.set(...p);m.userData={baseY:p[1],speed:Math.random()*.5+.3,offset:Math.random()*Math.PI*2,pulse:i===2||i===9};scene.add(m);nodes.push(m)});
-  const lmat=new THREE.LineBasicMaterial({color:0x1A8FD6,transparent:true,opacity:.1});
-  [[0,1],[1,2],[2,3],[4,5],[5,6],[6,7],[8,9],[9,10],[10,11],[0,4],[4,8],[8,12],[1,5],[5,9],[9,13],[2,6],[6,10],[10,14],[3,7],[7,11],[11,15]].forEach(([a,b])=>{const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(...pos[a]),new THREE.Vector3(...pos[b])]);scene.add(new THREE.Line(g,lmat))});
-  const ring=new THREE.Mesh(new THREE.TorusGeometry(1.8,.012,8,80),new THREE.MeshBasicMaterial({color:0xFF6B35,transparent:true,opacity:.2}));ring.rotation.x=Math.PI/3;scene.add(ring);
-  const ring2=new THREE.Mesh(new THREE.TorusGeometry(2.8,.008,8,80),new THREE.MeshBasicMaterial({color:0x1A8FD6,transparent:true,opacity:.09}));ring2.rotation.x=Math.PI/4;ring2.rotation.y=Math.PI/6;scene.add(ring2);
-  const pa=new Float32Array(240);for(let i=0;i<240;i++)pa[i]=(Math.random()-.5)*(i%3===2?3:8);
-  const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pa,3));
-  scene.add(new THREE.Points(pg,new THREE.PointsMaterial({color:0xFF6B35,size:.03,transparent:true,opacity:.35})));
-  let t=0,mox=0,moy=0;
-  document.addEventListener('mousemove',e=>{mox=(e.clientX/innerWidth-.5)*.5;moy=-(e.clientY/innerHeight-.5)*.3});
-  (function anim(){requestAnimationFrame(anim);t+=.008;
-    nodes.forEach(n=>{n.position.y=n.userData.baseY+Math.sin(t*n.userData.speed+n.userData.offset)*.08;if(n.userData.pulse){const s=1+Math.sin(t*3+n.userData.offset)*.15;n.scale.setScalar(s)}});
-    ring.rotation.z+=.003;ring2.rotation.z-=.002;ring2.rotation.y+=.001;
-    cam.position.x+=(mox-cam.position.x)*.05;cam.position.y+=(moy-cam.position.y)*.05;cam.lookAt(0,0,0);renderer.render(scene,cam);
-  })();
-  window.addEventListener('resize',()=>{const W=cv.clientWidth,H=cv.clientHeight;cam.aspect=W/H;cam.updateProjectionMatrix();renderer.setSize(W,H)});
+  const wrap=document.getElementById('cycle-wrap');
+  const svg=document.getElementById('cycle-svg');
+  if(!wrap||!svg)return;
+  const ns='http://www.w3.org/2000/svg';
+  const mk=(tag,a)=>{const e=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));return e};
+  const ids=['cb1','cb2','cb3','cb4','cb5','cb6','cb7','cb8'];
+  let animId=0;
+
+  function setup(){
+    cancelAnimationFrame(animId);
+    while(svg.firstChild)svg.removeChild(svg.firstChild);
+    const W=wrap.offsetWidth,H=wrap.offsetHeight;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    const wr=wrap.getBoundingClientRect();
+    const pts=ids.map(id=>{
+      const el=document.getElementById(id);
+      if(!el)return{x:W/2,y:H/2};
+      const r=el.getBoundingClientRect();
+      return{x:r.left-wr.left+r.width/2,y:r.top-wr.top+r.height/2};
+    });
+    const N=pts.length;
+    const defs=mk('defs',{});
+    const pf=mk('filter',{id:'pglow',x:'-100%',y:'-100%',width:'300%',height:'300%'});
+    const pb=mk('feGaussianBlur',{stdDeviation:'3',result:'b'});
+    const pm=mk('feMerge',{});
+    pm.appendChild(mk('feMergeNode',{in:'b'}));
+    pm.appendChild(mk('feMergeNode',{in:'SourceGraphic'}));
+    pf.appendChild(pb);pf.appendChild(pm);defs.appendChild(pf);
+    svg.appendChild(defs);
+    const lineEls=[];
+    for(let i=0;i<N;i++){
+      const a=pts[i],b=pts[(i+1)%N];
+      const ln=mk('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:'rgba(255,255,255,0.06)','stroke-width':'1'});
+      svg.appendChild(ln);lineEls.push(ln);
+    }
+    const halo=mk('circle',{cx:pts[0].x,cy:pts[0].y,r:'10',fill:'none',stroke:'rgba(255,107,53,.18)','stroke-width':'1.5'});
+    const dot=mk('circle',{cx:pts[0].x,cy:pts[0].y,r:'4.5',fill:'#FF6B35',filter:'url(#pglow)'});
+    svg.appendChild(halo);svg.appendChild(dot);
+    let seg=0,prog=0,paused=60;
+
+    function setActive(i){
+      ids.forEach((id,j)=>{
+        const el=document.getElementById(id);
+        if(!el)return;
+        const red=j===4;
+        el.style.borderColor=j===i?(red?'rgba(239,68,68,.7)':'rgba(255,107,53,.45)'):(red?'rgba(239,68,68,.2)':'rgba(255,255,255,.08)');
+        el.style.boxShadow=j===i?(red?'0 0 20px rgba(239,68,68,.18)':'0 0 20px rgba(255,107,53,.16)'):'none';
+      });
+      lineEls.forEach((l,j)=>l.setAttribute('stroke',j===i?'rgba(255,107,53,.22)':'rgba(255,255,255,.06)'));
+    }
+
+    setActive(0);
+    (function tick(){
+      animId=requestAnimationFrame(tick);
+      if(paused>0){paused--;return;}
+      prog+=0.004;
+      if(prog>=1){prog=0;seg=(seg+1)%N;setActive(seg);paused=60;return;}
+      const a=pts[seg],b=pts[(seg+1)%N];
+      const cx=a.x+(b.x-a.x)*prog,cy=a.y+(b.y-a.y)*prog;
+      dot.setAttribute('cx',cx);dot.setAttribute('cy',cy);
+      halo.setAttribute('cx',cx);halo.setAttribute('cy',cy);
+    })();
+  }
+
+  setTimeout(setup,200);
+  const hr=document.querySelector('.hero-right');
+  if(hr)hr.addEventListener('animationend',setup,{once:true});
+  let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(setup,200)});
 })();
 
 /* THREE.JS HOW IT WORKS */
