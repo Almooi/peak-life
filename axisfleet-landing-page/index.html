@@ -94,7 +94,7 @@ nav.s{
 .hero{
   position:relative;min-height:100vh;
   display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;padding:100px 5vw 60px;gap:4rem;
+  align-items:center;padding:100px 5vw 24px;gap:4rem;
   z-index:1;overflow:hidden;
 }
 .hero::before{
@@ -186,19 +186,19 @@ nav.s{
 .fc-txt{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(200,196,188,.5)}
 
 /* MARQUEE */
-.marquee{background:#0D1B2A;padding:.9rem 0;overflow:hidden}
+.marquee{background:#0D1B2A;padding:.5rem 0;overflow:hidden;margin:0}
 .mtrack{display:flex;animation:mscroll 32s linear infinite;width:max-content}
 .mitem{
   font-family:'Clash Display',sans-serif;font-weight:600;
   font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(200,196,188,.18);padding:0 2rem;white-space:nowrap;
-  display:flex;align-items:center;gap:2rem;
+  color:rgba(255,255,255,.85);padding:0 1rem;white-space:nowrap;
+  display:flex;align-items:center;gap:.6rem;
 }
 .mitem .mx{color:#FF6B35;font-size:.45rem}
 @keyframes mscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* SECTION BASE */
-.sec{padding:120px 5vw;position:relative;z-index:1}
+.sec{padding:80px 5vw;position:relative;z-index:1}
 .si{max-width:1200px;margin:0 auto}
 .stag{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#FF6B35;margin-bottom:1.2rem}
 .stag::before{content:'';width:14px;height:2px;background:#FF6B35;border-radius:1px}
