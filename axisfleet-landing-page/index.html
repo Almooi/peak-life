@@ -469,7 +469,7 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
       </div>
       <div class="hm-div"></div>
       <div>
-        <div class="hm-num">18<em> mod</em></div>
+        <div class="hm-num">18+<em>&nbsp;mod</em></div>
         <div class="hm-lbl">Axle modules per truck</div>
       </div>
     </div>
@@ -566,10 +566,10 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
               <div class="ppill2"><div class="ppn">92%</div><div class="ppl">Comply</div></div>
             </div>
             <div class="ptrucks">
-              <div class="ptruck"><div class="pdot on"></div><div class="pid">NTU-318</div><div class="pwt">28.1t</div><div class="pzn">A</div></div>
-              <div class="ptruck w"><div class="pdot w"></div><div class="pid" style="color:rgba(255,107,53,.75)">NTU-441</div><div class="pwt ov">32.4t▲</div><div class="pzn" style="color:rgba(255,107,53,.45)">C</div></div>
-              <div class="ptruck"><div class="pdot on"></div><div class="pid">NTU-207</div><div class="pwt">27.8t</div><div class="pzn">B</div></div>
-              <div class="ptruck"><div class="pdot off"></div><div class="pid" style="opacity:.3">NTU-512</div><div class="pwt" style="opacity:.3">—</div><div class="pzn">Yard</div></div>
+              <div class="ptruck"><div class="pdot on"></div><div class="pid">Truck1-318</div><div class="pwt">28.1t</div><div class="pzn">A</div></div>
+              <div class="ptruck w"><div class="pdot w"></div><div class="pid" style="color:rgba(255,107,53,.75)">Truck2-441</div><div class="pwt ov">32.4t▲</div><div class="pzn" style="color:rgba(255,107,53,.45)">C</div></div>
+              <div class="ptruck"><div class="pdot on"></div><div class="pid">Truck3-207</div><div class="pwt">27.8t</div><div class="pzn">B</div></div>
+              <div class="ptruck"><div class="pdot off"></div><div class="pid" style="opacity:.3">Truck4-512</div><div class="pwt" style="opacity:.3">—</div><div class="pzn">Yard</div></div>
             </div>
             <div class="plog">
               <div class="plr"><span class="pts">07:42</span><span class="pfl">▲ OVERLOAD · NTU-441</span></div>
@@ -1045,100 +1045,6 @@ const ph=document.querySelector('.phone');if(ph)pio.observe(ph);
   }
   const obs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){obs.disconnect();requestAnimationFrame(()=>{requestAnimationFrame(()=>{buildSVG();startAnim();});});}},{threshold:.1});
   if(wrap)obs.observe(wrap);
-})();
-</script>
-
-<!-- EDIT MODE OVERLAY -->
-<div id="edit-overlay" style="position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;gap:10px;font-family:sans-serif;">
-  <button id="btn-edit" style="background:#1A8FD6;color:#fff;border:none;padding:10px 16px;border-radius:8px;font-weight:bold;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);">Enable Edit Mode</button>
-  <button id="btn-save" style="display:none;background:#22C55E;color:#fff;border:none;padding:10px 16px;border-radius:8px;font-weight:bold;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);">Save Changes</button>
-</div>
-
-<script data-edit-script>
-(function(){
-  const btnEdit = document.getElementById('btn-edit');
-  const btnSave = document.getElementById('btn-save');
-  let editing = false;
-  
-  function getEditableParents() {
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-    const nodes = [];
-    let node;
-    while(node = walker.nextNode()) {
-      if(node.nodeValue.trim() !== '') {
-        let parent = node.parentNode;
-        if(parent && 
-           parent.nodeName !== 'SCRIPT' && 
-           parent.nodeName !== 'STYLE' && 
-           !parent.closest('#edit-overlay')) {
-             nodes.push(parent);
-        }
-      }
-    }
-    return [...new Set(nodes)];
-  }
-
-  let editableElements = [];
-
-  btnEdit.addEventListener('click', () => {
-    editing = !editing;
-    if(editing) {
-      editableElements = getEditableParents();
-      editableElements.forEach(el => {
-        el.setAttribute('contenteditable', 'true');
-        el.style.outline = '1px dashed rgba(26,143,214,0.6)';
-        el.style.outlineOffset = '2px';
-      });
-      btnEdit.textContent = 'Disable Edit Mode';
-      btnSave.style.display = 'block';
-    } else {
-      editableElements.forEach(el => {
-        el.removeAttribute('contenteditable');
-        el.style.outline = '';
-        el.style.outlineOffset = '';
-      });
-      btnEdit.textContent = 'Enable Edit Mode';
-      btnSave.style.display = 'none';
-    }
-  });
-
-  btnSave.addEventListener('click', () => {
-    // Cleanup
-    editableElements.forEach(el => {
-      el.removeAttribute('contenteditable');
-      el.style.outline = '';
-      el.style.outlineOffset = '';
-    });
-    btnEdit.textContent = 'Enable Edit Mode';
-    btnSave.style.display = 'none';
-    editing = false;
-    
-    // Remove the overlay itself from the saved HTML so it doesn't persist forever
-    const overlay = document.getElementById('edit-overlay');
-    const script = document.querySelector('script[data-edit-script]');
-    
-    // Get full HTML while the overlay is hidden
-    overlay.style.display = 'none';
-    let fullHtml = '<!DOCTYPE html>\n<html lang="en">\n' + document.documentElement.innerHTML + '\n</html>';
-    
-    // Clean out the overlay code so it doesn't stay in the final file
-    fullHtml = fullHtml.replace(overlay.outerHTML, '');
-    if (script) fullHtml = fullHtml.replace(script.outerHTML, '');
-    
-    // Download
-    const blob = new Blob([fullHtml], {type: 'text/html'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'edited-index.html';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    
-    overlay.style.display = 'flex';
-    
-    alert('Downloaded edited-index.html!\n\nPlease drop this file into your axisfleet-platform1 project folder, then tell me "I saved it" so I can apply your changes permanently.');
-  });
 })();
 </script>
 
