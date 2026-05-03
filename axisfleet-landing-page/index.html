@@ -51,44 +51,44 @@ body{
 
 /* NAV */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;height:68px;
+  position:fixed;top:0;left:0;right:0;z-index:500;height:52px;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 5vw;
-  background:rgba(28,26,22,.75);
-  backdrop-filter:blur(16px);
-  box-shadow:0 1px 0 rgba(255,255,255,.05);
-  transition:background .4s,box-shadow .4s;
+  background:rgba(28,26,22,.6);
+  backdrop-filter:blur(12px);
+  box-shadow:0 1px 0 rgba(255,255,255,.04);
+  transition:background .4s,box-shadow .4s,height .4s;
 }
 nav.s{
-  background:rgba(28,26,22,.96);
-  backdrop-filter:blur(20px);
-  box-shadow:0 1px 0 rgba(255,255,255,.07);
+  background:rgba(28,26,22,.92);
+  height:48px;
+  box-shadow:0 1px 0 rgba(255,255,255,.06);
 }
-.nlogo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.nav-logo{height:44px;width:auto}
-.nav-tagline{font-size:.72rem;font-weight:500;color:rgba(200,196,188,.35);letter-spacing:.04em;border-left:1px solid rgba(255,255,255,.1);padding-left:14px;margin-left:2px;line-height:1.4}
-.nmark svg{width:28px;height:28px}
-.nname{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-.01em;color:#F0EDE8}
+.nlogo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo{height:32px;width:auto}
+.nav-tagline{font-size:.65rem;font-weight:500;color:rgba(200,196,188,.25);letter-spacing:.03em;border-left:1px solid rgba(255,255,255,.08);padding-left:12px;margin-left:0;line-height:1.2}
+.nmark svg{width:24px;height:24px}
+.nname{font-family:'Clash Display',sans-serif;font-weight:700;font-size:1rem;letter-spacing:-.01em;color:#F0EDE8}
 .nname b{color:#1A8FD6}
-.nsub{font-family:'JetBrains Mono',monospace;font-size:.42rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.22);display:block;margin-top:1px}
-.nlinks{display:flex;align-items:center;gap:2rem}
-.nlinks a{font-size:.82rem;font-weight:500;color:rgba(200,196,188,.7);text-decoration:none;transition:color .2s}
+.nsub{font-family:'JetBrains Mono',monospace;font-size:.4rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.18);display:block;margin-top:0}
+.nlinks{display:flex;align-items:center;gap:1.5rem}
+.nlinks a{font-size:.78rem;font-weight:500;color:rgba(200,196,188,.6);text-decoration:none;transition:color .2s}
 .nlinks a:hover{color:#F0EDE8}
 .nbtn{
-  background:#F0EDE8 !important;color:#1A1A2E !important;
-  padding:.55rem 1.4rem;border-radius:100px;
-  font-size:.8rem !important;font-weight:600 !important;
-  transition:background .2s,transform .15s !important;
+  background:rgba(240,237,232,.9) !important;color:#1A1A2E !important;
+  padding:.45rem 1.1rem;border-radius:100px;
+  font-size:.72rem !important;font-weight:600 !important;
+  transition:all .2s !important;
 }
 .nbtn:hover{background:#FF6B35 !important;color:#fff !important;transform:translateY(-1px)}
 .nbtn-gold{
   background:linear-gradient(135deg,#C8922A,#E8B84B) !important;
   color:#fff !important;
-  padding:.55rem 1.4rem;border-radius:100px;
-  font-size:.8rem !important;font-weight:600 !important;
+  padding:.45rem 1.1rem;border-radius:100px;
+  font-size:.72rem !important;font-weight:600 !important;
   transition:all .2s !important;border:none;cursor:none;
 }
-.nbtn-gold:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(200,146,42,.4) !important}
+.nbtn-gold:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(200,146,42,.3) !important}
 
 /* HERO */
 .hero{
