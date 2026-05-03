@@ -1047,5 +1047,69 @@ const ph=document.querySelector('.phone');if(ph)pio.observe(ph);
   if(wrap)obs.observe(wrap);
 })();
 </script>
+
+<!-- EDIT MODE SCRIPT -->
+<script id="edit-mode-script">
+(function() {
+  const tags = 'h1, h2, h3, p, span, div.cc-t, div.cc-d, div.tpf, div.tpp, div.tph, div.fb-t, div.fb-d, div.dm-title, div.dm-sub, div.verse-q, div.verse-ref, div.ct-label, h2.ct-h, p.ct-p, a.ct-btn, span.nav-tagline, div.nname, span.nsub';
+  
+  document.querySelectorAll(tags).forEach(el => {
+    // Make text-heavy elements editable, avoiding structurally complex ones
+    if (el.children.length === 0 || el.tagName.toLowerCase() === 'p' || el.tagName.toLowerCase() === 'h1' || el.tagName.toLowerCase() === 'h2') {
+      el.setAttribute('contenteditable', 'true');
+      el.style.outline = '2px dashed rgba(255,107,53,0.5)';
+      el.style.outlineOffset = '2px';
+      el.style.transition = 'outline 0.2s';
+      
+      el.addEventListener('focus', () => { el.style.outline = '2px solid #FF6B35'; });
+      el.addEventListener('blur', () => { el.style.outline = '2px dashed rgba(255,107,53,0.5)'; });
+    }
+  });
+
+  const btn = document.createElement('button');
+  btn.innerHTML = '💾 Download Edits';
+  Object.assign(btn.style, {
+    position: 'fixed', bottom: '30px', right: '30px', zIndex: '99999',
+    background: '#FF6B35', color: '#fff', border: 'none', borderRadius: '100px',
+    padding: '14px 24px', fontFamily: 'sans-serif', fontSize: '16px',
+    fontWeight: 'bold', cursor: 'pointer', boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+    transition: 'transform 0.2s, background 0.2s'
+  });
+  
+  btn.onmouseenter = () => { btn.style.transform = 'translateY(-2px)'; btn.style.background = '#E55A2B'; };
+  btn.onmouseleave = () => { btn.style.transform = 'none'; btn.style.background = '#FF6B35'; };
+  
+  btn.onclick = () => {
+    // 1. Remove this script tag so it doesn't get saved into the clean file
+    const scriptTag = document.getElementById('edit-mode-script');
+    if (scriptTag) scriptTag.remove();
+
+    // 2. Remove editing styles and attributes
+    document.querySelectorAll('[contenteditable]').forEach(el => {
+      el.removeAttribute('contenteditable');
+      el.style.outline = '';
+      el.style.outlineOffset = '';
+      el.style.transition = '';
+      // clean up empty style tags if we just emptied it
+      if (el.getAttribute('style') === '') el.removeAttribute('style');
+    });
+    
+    // 3. Remove the button itself
+    btn.remove();
+    
+    // 4. Generate HTML and trigger download
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    const blob = new Blob([html], {type: 'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'index.html';
+    a.click();
+    
+    alert('File downloaded! Please replace the index.html file in your Cursor project with this downloaded file, then tell the AI you are done.');
+  };
+  document.body.appendChild(btn);
+})();
+</script>
 </body>
 </html>
