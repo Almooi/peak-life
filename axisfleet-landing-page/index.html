@@ -1051,23 +1051,23 @@ const ph=document.querySelector('.phone');if(ph)pio.observe(ph);
 <!-- EDIT MODE SCRIPT -->
 <script id="edit-mode-script">
 (function() {
-  const tags = 'h1, h2, h3, p, span, div.cc-t, div.cc-d, div.tpf, div.tpp, div.tph, div.fb-t, div.fb-d, div.dm-title, div.dm-sub, div.verse-q, div.verse-ref, div.ct-label, h2.ct-h, p.ct-p, a.ct-btn, span.nav-tagline, div.nname, span.nsub';
+  const tags = 'h1, h2, h3, p, span, div.cc-t, div.cc-d, div.tpf, div.tpp, div.tph, div.fb-t, div.fb-d, div.dm-title, div.dm-sub, div.verse-q, div.verse-ref, div.ct-label, h2.ct-h, p.ct-p, a.ct-btn, span.nav-tagline, div.nname, span.nsub, div.hm-num, div.hm-lbl';
   
   document.querySelectorAll(tags).forEach(el => {
-    // Make text-heavy elements editable, avoiding structurally complex ones
-    if (el.children.length === 0 || el.tagName.toLowerCase() === 'p' || el.tagName.toLowerCase() === 'h1' || el.tagName.toLowerCase() === 'h2') {
+    // Only make leaf-ish elements editable to avoid breaking layout
+    if (el.children.length <= 1 || el.tagName.toLowerCase() === 'p' || el.tagName.toLowerCase() === 'h1' || el.tagName.toLowerCase() === 'h2') {
       el.setAttribute('contenteditable', 'true');
-      el.style.outline = '2px dashed rgba(255,107,53,0.5)';
+      el.style.outline = '1px dashed rgba(255,107,53,0.4)';
       el.style.outlineOffset = '2px';
-      el.style.transition = 'outline 0.2s';
       
       el.addEventListener('focus', () => { el.style.outline = '2px solid #FF6B35'; });
-      el.addEventListener('blur', () => { el.style.outline = '2px dashed rgba(255,107,53,0.5)'; });
+      el.addEventListener('blur', () => { el.style.outline = '1px dashed rgba(255,107,53,0.4)'; });
     }
   });
 
   const btn = document.createElement('button');
-  btn.innerHTML = '💾 Download Edits';
+  btn.id = 'edit-mode-save-btn';
+  btn.innerHTML = '📋 Copy Edits to Clipboard';
   Object.assign(btn.style, {
     position: 'fixed', bottom: '30px', right: '30px', zIndex: '99999',
     background: '#FF6B35', color: '#fff', border: 'none', borderRadius: '100px',
@@ -1080,33 +1080,33 @@ const ph=document.querySelector('.phone');if(ph)pio.observe(ph);
   btn.onmouseleave = () => { btn.style.transform = 'none'; btn.style.background = '#FF6B35'; };
   
   btn.onclick = () => {
-    // 1. Remove this script tag so it doesn't get saved into the clean file
-    const scriptTag = document.getElementById('edit-mode-script');
-    if (scriptTag) scriptTag.remove();
+    // 1. Create a clone to clean up without destroying the current view
+    const doc = document.documentElement.cloneNode(true);
+    
+    // 2. Remove the script and button from the clone
+    const s = doc.querySelector('#edit-mode-script'); if(s) s.remove();
+    const b = doc.querySelector('#edit-mode-save-btn'); if(b) b.remove();
 
-    // 2. Remove editing styles and attributes
-    document.querySelectorAll('[contenteditable]').forEach(el => {
+    // 3. Strip editing artifacts from clone
+    doc.querySelectorAll('[contenteditable]').forEach(el => {
       el.removeAttribute('contenteditable');
       el.style.outline = '';
       el.style.outlineOffset = '';
-      el.style.transition = '';
-      // clean up empty style tags if we just emptied it
       if (el.getAttribute('style') === '') el.removeAttribute('style');
     });
-    
-    // 3. Remove the button itself
-    btn.remove();
-    
-    // 4. Generate HTML and trigger download
-    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-    const blob = new Blob([html], {type: 'text/html'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'index.html';
-    a.click();
-    
-    alert('File downloaded! Please replace the index.html file in your Cursor project with this downloaded file, then tell the AI you are done.');
+
+    // 4. Copy to clipboard
+    const fullHTML = '<!DOCTYPE html>\n' + doc.outerHTML;
+    navigator.clipboard.writeText(fullHTML).then(() => {
+      btn.innerHTML = '✅ Copied! Paste it to Gemini';
+      btn.style.background = '#22C55E';
+      setTimeout(() => {
+        btn.innerHTML = '📋 Copy Edits to Clipboard';
+        btn.style.background = '#FF6B35';
+      }, 3000);
+    }).catch(err => {
+      alert('Failed to copy. Try again or check browser permissions.');
+    });
   };
   document.body.appendChild(btn);
 })();
