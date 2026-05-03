@@ -164,19 +164,55 @@ nav.s{
 
 /* HERO RIGHT */
 .hero-right{position:relative;z-index:2;opacity:0;animation:lfu 1s ease forwards 1.9s}
-.cycle-wrap{position:relative;width:100%;height:480px;overflow:hidden}
-.cycle-svg{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;z-index:0;pointer-events:none}
-.cb{
-  position:absolute;width:130px;z-index:1;
-  background:rgba(28,24,18,.92);backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.08);border-radius:10px;
-  padding:8px 11px;
-  box-shadow:0 4px 20px rgba(0,0,0,.35);
-  transition:border-color .5s ease,box-shadow .5s ease;
+/* HERO WEB */
+#hero-web{width:100%;height:480px;border-radius:20px;display:block;opacity:.75}
+
+/* FLEET HEALTH */
+.fh-wrap{margin:2rem 0 2.5rem}
+.fh-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:10px}
+.fh-lbl{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,196,188,.3)}
+.fh-sub{font-size:.55rem;color:rgba(200,196,188,.18);font-family:'JetBrains Mono',monospace;letter-spacing:.03em;margin-top:3px}
+.fh-pct{font-family:'Clash Display',sans-serif;font-weight:700;font-size:2.2rem;color:rgba(200,196,188,.2);letter-spacing:-.04em;line-height:1;transition:color .7s ease}
+.fh-bar-wrap{position:relative;height:9px;border-radius:5px;overflow:hidden;background:rgba(255,255,255,.04);margin-bottom:7px}
+.fh-zones{display:flex;position:absolute;inset:0}
+.fh-z-red{background:rgba(239,68,68,.12)}
+.fh-z-amber{background:rgba(245,158,11,.1)}
+.fh-z-green{background:rgba(34,197,94,.08)}
+.fh-z-opt{background:rgba(0,212,160,.09)}
+.fh-fill{position:absolute;top:0;left:0;height:100%;border-radius:5px;width:0;transition:width .9s cubic-bezier(.4,0,.2,1),background .7s ease}
+.fh-marks{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.4rem;color:rgba(200,196,188,.18);letter-spacing:.04em}
+
+/* FLOW DIAGRAM */
+.flow-outer{position:relative;margin-top:1rem}
+.flow-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:0}
+.flow-steps{display:flex;flex-direction:column;position:relative;z-index:1}
+.fs-row{display:flex}
+.fs-left{justify-content:flex-start}
+.fs-right{justify-content:flex-end}
+.fs-center{justify-content:center}
+.fs-full{justify-content:stretch}
+.fs-siblings{justify-content:center;gap:10px;flex-wrap:wrap}
+.fs-conn{height:34px}
+.fb{
+  width:260px;border:1px solid rgba(255,255,255,.06);border-radius:14px;
+  padding:1rem 1.3rem;background:transparent;
+  transition:border-color .55s ease,box-shadow .55s ease,background .55s ease;
 }
-.cb-n{font-family:'JetBrains Mono',monospace;font-size:.42rem;letter-spacing:.14em;color:rgba(200,196,188,.22);line-height:1;margin-bottom:3px}
-.cb-t{font-family:'Clash Display',sans-serif;font-weight:700;font-size:.72rem;color:#F0EDE8;line-height:1.2;letter-spacing:-.01em;margin-bottom:2px}
-.cb-d{font-family:'JetBrains Mono',monospace;font-size:.44rem;color:rgba(200,196,188,.32);letter-spacing:.03em;line-height:1.5}
+.fb-sm{width:auto;min-width:110px;max-width:148px;flex:1;padding:.75rem .9rem;text-align:center}
+.fb-full{width:100%;padding:1.5rem 2rem}
+.fb-report{width:290px}
+.fb-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem}
+.fb-num{font-family:'JetBrains Mono',monospace;font-size:.42rem;letter-spacing:.14em;color:rgba(200,196,188,.2);transition:color .5s}
+.fb-score{font-family:'Clash Display',sans-serif;font-weight:700;font-size:.88rem;color:rgba(200,196,188,.18);letter-spacing:-.01em;transition:color .5s}
+.fb-t{font-family:'Clash Display',sans-serif;font-weight:700;font-size:.82rem;color:rgba(200,196,188,.28);letter-spacing:-.01em;line-height:1.2;margin-bottom:.22rem;transition:color .5s}
+.fb-d{font-family:'JetBrains Mono',monospace;font-size:.43rem;color:rgba(200,196,188,.16);letter-spacing:.03em;line-height:1.6;transition:color .5s}
+.fb-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:.4rem}
+.fb-chip{font-family:'JetBrains Mono',monospace;font-size:.38rem;letter-spacing:.05em;color:rgba(200,196,188,.16);border:1px solid rgba(255,255,255,.06);border-radius:100px;padding:2px 6px;transition:all .5s}
+.fb-target{font-family:'JetBrains Mono',monospace;font-size:.44rem;letter-spacing:.04em;color:rgba(200,196,188,.16);margin-top:.5rem;transition:color .5s}
+.fb-win-inner{display:flex;justify-content:space-between;align-items:center;gap:2rem}
+.fb-win .fb-t{font-size:1.25rem;letter-spacing:-.025em}
+.fb-win .fb-d{font-size:.5rem}
+.fb-win-pct{font-family:'Clash Display',sans-serif;font-weight:700;font-size:2.8rem;color:rgba(200,196,188,.14);letter-spacing:-.04em;line-height:1;white-space:nowrap;transition:color .5s,text-shadow .5s}
 
 /* MARQUEE */
 .marquee{background:#0D1B2A;padding:.5rem 0;overflow:hidden;margin:0}
@@ -288,7 +324,7 @@ nav.s{
 .cc-d{font-size:.85rem;color:rgba(200,196,188,.7);line-height:1.7}
 
 /* HOW IT WORKS */
-.how-sec{background:#0D1B2A;overflow:hidden;position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.04)}
+.how-sec{background:#0D1B2A;overflow:visible;position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.04)}
 .how-sec .stag{color:#FF6B35}
 .how-sec .sh2{color:#F0EDE8}
 .how-sec .sh2 em{color:#1A8FD6}
@@ -389,7 +425,7 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
 /* RESPONSIVE */
 @media(max-width:960px){
   .hero{grid-template-columns:1fr;padding-top:120px}
-  .cycle-wrap{height:360px}
+  #hero-web{height:320px}
   .plat-grid{grid-template-columns:1fr;gap:40px}
   .cap-grid{grid-template-columns:1fr 1fr}
   .how-grid{grid-template-columns:1fr;gap:48px}
@@ -430,7 +466,7 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
     <a href="#platform">Platform</a>
     <a href="#capabilities">Capabilities</a>
     <a href="#how">How It Works</a>
-    <a href="#platform-link" class="nbtn-gold" id="nav-platform-btn">View Platform</a>
+    <a href="#how" class="nbtn-gold" id="nav-platform-btn">The Process</a>
     <a href="#contact" class="nbtn">Contact Us</a>
   </div>
 </nav>
@@ -467,49 +503,7 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
     </div>
   </div>
   <div class="hero-right">
-    <div class="cycle-wrap" id="cycle-wrap">
-      <svg class="cycle-svg" id="cycle-svg" xmlns="http://www.w3.org/2000/svg"></svg>
-      <div class="cb" id="cb1" style="left:calc(50% - 65px);top:5px">
-        <div class="cb-n">01</div>
-        <div class="cb-t">Truck Loaded</div>
-        <div class="cb-d">Loading bay · Zone C</div>
-      </div>
-      <div class="cb" id="cb2" style="left:calc(75% - 65px);top:85px">
-        <div class="cb-n">02</div>
-        <div class="cb-t">Sensors Active</div>
-        <div class="cb-d">WLM600 · ±1% accuracy</div>
-      </div>
-      <div class="cb" id="cb3" style="left:calc(87% - 65px);top:201px">
-        <div class="cb-n">03</div>
-        <div class="cb-t">GSM Transmitted</div>
-        <div class="cb-d">Real-time · GPRS link</div>
-      </div>
-      <div class="cb" id="cb4" style="left:calc(75% - 65px);top:333px">
-        <div class="cb-n">04</div>
-        <div class="cb-t">Platform Receives</div>
-        <div class="cb-d">Data stream · live</div>
-      </div>
-      <div class="cb" id="cb5" style="left:calc(50% - 65px);top:388px;border-color:rgba(239,68,68,.2)">
-        <div class="cb-n" style="color:rgba(239,68,68,.4)">05</div>
-        <div class="cb-t" style="color:#EF4444">Overload Detected</div>
-        <div class="cb-d" style="color:rgba(239,68,68,.5)">NTU-441 · 32.4t &#9650; +2.4t</div>
-      </div>
-      <div class="cb" id="cb6" style="left:calc(25% - 65px);top:333px">
-        <div class="cb-n">06</div>
-        <div class="cb-t" style="color:#22C55E">Driver SMS Sent</div>
-        <div class="cb-d">Auto-dispatched · 07:42</div>
-      </div>
-      <div class="cb" id="cb7" style="left:calc(13% - 65px);top:201px">
-        <div class="cb-n">07</div>
-        <div class="cb-t">Dispatcher Notified</div>
-        <div class="cb-d">Live ops dashboard</div>
-      </div>
-      <div class="cb" id="cb8" style="left:calc(25% - 65px);top:85px">
-        <div class="cb-n">08</div>
-        <div class="cb-t">Data Logged</div>
-        <div class="cb-d">NTU-441 · Zone C · 07:42</div>
-      </div>
-    </div>
+    <canvas id="hero-web"></canvas>
   </div>
 </section>
 
@@ -645,19 +639,124 @@ textarea.dm-input{resize:none;height:80px;line-height:1.65}
 <!-- HOW IT WORKS -->
 <section class="sec how-sec" id="how">
   <div class="si">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
-      <div>
-        <div class="stag rv">The Process</div>
-        <h2 class="sh2 rv">Installed once.<br><em>Runs forever.</em></h2>
-        <p class="sp rv">From fitting day to continuous monitoring — AxisFleet handles every step so your team can focus on moving freight.</p>
-        <div class="steps-list rv">
-          <div class="step"><div class="step-num">01</div><div><div class="step-t">Hardware Installation</div><div class="step-d">Wireless sensors and onboard units fitted by the AxisFleet team. Minimal downtime — your fleet keeps moving throughout.</div></div></div>
-          <div class="step"><div class="step-num">02</div><div><div class="step-t">Live Data Stream</div><div class="step-d">Load weights, position, and zone data flow to the platform in real time — timestamped, accurate, and automatic.</div></div></div>
-          <div class="step"><div class="step-num">03</div><div><div class="step-t">Intelligent Alerting</div><div class="step-d">Overloads and breaches flagged instantly. Actionable intelligence delivered to your team so they can act immediately.</div></div></div>
-          <div class="step"><div class="step-num">04</div><div><div class="step-t">Continuous Monitoring</div><div class="step-d">We monitor your operation on an ongoing basis. Support and oversight long after installation day.</div></div></div>
+    <div class="stag rv">The Process</div>
+    <h2 class="sh2 rv">One System. <em>Every Load.</em></h2>
+    <p class="sp rv">From hardware to healthy fleet — watch AxisFleet work in a real operation.</p>
+
+    <div class="fh-wrap rv">
+      <div class="fh-top">
+        <div>
+          <div class="fh-lbl">Fleet Health</div>
+          <div class="fh-sub">Live score across all active vehicles</div>
         </div>
+        <div class="fh-pct" id="fh-pct">—</div>
       </div>
-      <div class="rv-r"><canvas id="how3d"></canvas></div>
+      <div class="fh-bar-wrap">
+        <div class="fh-zones">
+          <div class="fh-z-red" style="width:60%"></div>
+          <div class="fh-z-amber" style="width:15%"></div>
+          <div class="fh-z-green" style="width:15%"></div>
+          <div class="fh-z-opt" style="width:10%"></div>
+        </div>
+        <div class="fh-fill" id="fh-fill"></div>
+      </div>
+      <div class="fh-marks"><span>0%</span><span>60% Critical</span><span>75% Warning</span><span>90% Healthy</span><span>100%</span></div>
+    </div>
+
+    <div class="flow-outer" id="flow-outer">
+      <svg class="flow-svg" id="flow-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="flow-steps">
+
+        <div class="fs-row fs-left">
+          <div class="fb" id="fb1" data-color="orange" data-score="85">
+            <div class="fb-meta"><span class="fb-num">01</span><span class="fb-score">85%</span></div>
+            <div class="fb-t">Hardware Installed</div>
+            <div class="fb-d">WLM600 · Axles wired · System ready</div>
+          </div>
+        </div>
+        <div class="fs-conn"></div>
+
+        <div class="fs-row fs-right">
+          <div class="fb" id="fb2" data-color="blue" data-score="85">
+            <div class="fb-meta"><span class="fb-num">02</span><span class="fb-score">85%</span></div>
+            <div class="fb-t">Live Data Stream</div>
+            <div class="fb-d">Continuous · Real-time · GSM</div>
+            <div class="fb-chips">
+              <span class="fb-chip">Axle Load</span><span class="fb-chip">GPS</span><span class="fb-chip">Speed</span><span class="fb-chip">G-force</span><span class="fb-chip">Driver ID</span>
+            </div>
+          </div>
+        </div>
+        <div class="fs-conn"></div>
+
+        <div class="fs-row fs-left">
+          <div class="fb" id="fb3" data-color="amber" data-score="68">
+            <div class="fb-meta"><span class="fb-num">03</span><span class="fb-score">68% ↓</span></div>
+            <div class="fb-t">Event Triggered</div>
+            <div class="fb-d">Threshold crossed · Flag raised</div>
+          </div>
+        </div>
+        <div class="fs-conn"></div>
+
+        <div class="fs-row fs-siblings" id="fb4-row">
+          <div class="fb fb-sm" id="fb4a" data-color="red" data-score="62"><div class="fb-t">Overload</div></div>
+          <div class="fb fb-sm" id="fb4b" data-color="red" data-score="62"><div class="fb-t">Underload</div></div>
+          <div class="fb fb-sm" id="fb4c" data-color="red" data-score="62"><div class="fb-t">Harsh Braking</div></div>
+          <div class="fb fb-sm" id="fb4d" data-color="red" data-score="62"><div class="fb-t">Road Deviation</div></div>
+          <div class="fb fb-sm" id="fb4e" data-color="red" data-score="62"><div class="fb-t">Driver Behaviour</div></div>
+        </div>
+        <div class="fs-conn"></div>
+
+        <div class="fs-row fs-right">
+          <div class="fb" id="fb5" data-color="orange" data-score="62">
+            <div class="fb-meta"><span class="fb-num">05</span><span class="fb-score">62%</span></div>
+            <div class="fb-t">Ops Manager SMS</div>
+            <div class="fb-d">Alert auto-dispatched · Truck · Zone · Event</div>
+          </div>
+        </div>
+        <div class="fs-conn"></div>
+
+        <div class="fs-row fs-left">
+          <div class="fb" id="fb6" data-color="blue" data-score="79">
+            <div class="fb-meta"><span class="fb-num">06</span><span class="fb-score">79% ↑</span></div>
+            <div class="fb-t">Ops Action</div>
+            <div class="fb-d">Mobile app · Call driver · Locate truck</div>
+          </div>
+        </div>
+        <div class="fs-conn"></div>
+
+        <div class="fs-row fs-right">
+          <div class="fb" id="fb7" data-color="amber" data-score="88">
+            <div class="fb-meta"><span class="fb-num">07</span><span class="fb-score">88% ↑</span></div>
+            <div class="fb-t">Correction Made</div>
+            <div class="fb-d">Load adjusted · Truck redirected · Flag cleared</div>
+          </div>
+        </div>
+        <div class="fs-conn"></div>
+
+        <div class="fs-row fs-full">
+          <div class="fb fb-full fb-win" id="fb8" data-color="green" data-score="95">
+            <div class="fb-win-inner">
+              <div>
+                <div class="fb-meta"><span class="fb-num">08</span></div>
+                <div class="fb-t">Fleet on Track</div>
+                <div class="fb-d">All vehicles compliant · Load within limits · Operation stable</div>
+              </div>
+              <div class="fb-win-pct" id="fb8-pct">95%</div>
+            </div>
+          </div>
+        </div>
+        <div class="fs-conn"></div>
+
+        <div class="fs-row fs-center">
+          <div class="fb fb-report" id="fb9" data-color="gold">
+            <div class="fb-meta"><span class="fb-num">09</span></div>
+            <div class="fb-t">Report Generated</div>
+            <div class="fb-d">Weekly · Monthly · Compliance overview</div>
+            <div class="fb-target">Close the last 5% · Target 99–100%</div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -908,109 +1007,145 @@ const ph=document.querySelector('.phone');if(ph)pio.observe(ph);
   (function render(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.tick();p.draw()});lines();requestAnimationFrame(render)})();
 })();
 
-/* CYCLE STORY */
+/* HERO WEBBING */
 (function(){
-  const wrap=document.getElementById('cycle-wrap');
-  const svg=document.getElementById('cycle-svg');
-  if(!wrap||!svg)return;
-  const ns='http://www.w3.org/2000/svg';
-  const mk=(tag,a)=>{const e=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));return e};
-  const ids=['cb1','cb2','cb3','cb4','cb5','cb6','cb7','cb8'];
-  let animId=0;
-
-  function setup(){
-    cancelAnimationFrame(animId);
-    while(svg.firstChild)svg.removeChild(svg.firstChild);
-    const W=wrap.offsetWidth,H=wrap.offsetHeight;
-    svg.setAttribute('viewBox','0 0 '+W+' '+H);
-    const wr=wrap.getBoundingClientRect();
-    const pts=ids.map(id=>{
-      const el=document.getElementById(id);
-      if(!el)return{x:W/2,y:H/2};
-      const r=el.getBoundingClientRect();
-      return{x:r.left-wr.left+r.width/2,y:r.top-wr.top+r.height/2};
-    });
-    const N=pts.length;
-    const defs=mk('defs',{});
-    const pf=mk('filter',{id:'pglow',x:'-100%',y:'-100%',width:'300%',height:'300%'});
-    const pb=mk('feGaussianBlur',{stdDeviation:'3',result:'b'});
-    const pm=mk('feMerge',{});
-    pm.appendChild(mk('feMergeNode',{in:'b'}));
-    pm.appendChild(mk('feMergeNode',{in:'SourceGraphic'}));
-    pf.appendChild(pb);pf.appendChild(pm);defs.appendChild(pf);
-    svg.appendChild(defs);
-    const lineEls=[];
-    for(let i=0;i<N;i++){
-      const a=pts[i],b=pts[(i+1)%N];
-      const ln=mk('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:'rgba(255,255,255,0.06)','stroke-width':'1'});
-      svg.appendChild(ln);lineEls.push(ln);
+  const c=document.getElementById('hero-web');
+  if(!c)return;
+  const ctx=c.getContext('2d');
+  function resize(){c.width=c.clientWidth*devicePixelRatio;c.height=c.clientHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);}
+  resize();
+  const N=60;
+  const pts=Array.from({length:N},()=>({x:Math.random()*c.clientWidth,y:Math.random()*c.clientHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}));
+  (function render(){
+    requestAnimationFrame(render);
+    const W=c.clientWidth,H=c.clientHeight;
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;});
+    for(let i=0;i<N;i++)for(let j=i+1;j<N;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<115){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle='rgba(26,143,214,'+(1-d/115)*.11+')';ctx.lineWidth=.6;ctx.stroke();}
     }
-    const halo=mk('circle',{cx:pts[0].x,cy:pts[0].y,r:'10',fill:'none',stroke:'rgba(255,107,53,.18)','stroke-width':'1.5'});
-    const dot=mk('circle',{cx:pts[0].x,cy:pts[0].y,r:'4.5',fill:'#FF6B35',filter:'url(#pglow)'});
-    svg.appendChild(halo);svg.appendChild(dot);
-    let seg=0,prog=0,paused=60;
-
-    function setActive(i){
-      ids.forEach((id,j)=>{
-        const el=document.getElementById(id);
-        if(!el)return;
-        const red=j===4;
-        el.style.borderColor=j===i?(red?'rgba(239,68,68,.7)':'rgba(255,107,53,.45)'):(red?'rgba(239,68,68,.2)':'rgba(255,255,255,.08)');
-        el.style.boxShadow=j===i?(red?'0 0 20px rgba(239,68,68,.18)':'0 0 20px rgba(255,107,53,.16)'):'none';
-      });
-      lineEls.forEach((l,j)=>l.setAttribute('stroke',j===i?'rgba(255,107,53,.22)':'rgba(255,255,255,.06)'));
-    }
-
-    setActive(0);
-    (function tick(){
-      animId=requestAnimationFrame(tick);
-      if(paused>0){paused--;return;}
-      prog+=0.004;
-      if(prog>=1){prog=0;seg=(seg+1)%N;setActive(seg);paused=60;return;}
-      const a=pts[seg],b=pts[(seg+1)%N];
-      const cx=a.x+(b.x-a.x)*prog,cy=a.y+(b.y-a.y)*prog;
-      dot.setAttribute('cx',cx);dot.setAttribute('cy',cy);
-      halo.setAttribute('cx',cx);halo.setAttribute('cy',cy);
-    })();
-  }
-
-  setTimeout(setup,200);
-  const hr=document.querySelector('.hero-right');
-  if(hr)hr.addEventListener('animationend',setup,{once:true});
-  let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(setup,200)});
+  })();
+  window.addEventListener('resize',()=>{resize();pts.forEach(p=>{p.x=Math.min(p.x,c.clientWidth);p.y=Math.min(p.y,c.clientHeight);});});
 })();
 
-/* THREE.JS HOW IT WORKS */
+/* FLOW ANIMATION */
 (function(){
-  const cv=document.getElementById('how3d');
-  if(!cv||!window.THREE)return;
-  const W=cv.clientWidth,H=cv.clientHeight;
-  const renderer=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
-  renderer.setSize(W,H);renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  renderer.setClearColor(0x000000,0);
-  const scene=new THREE.Scene();
-  const cam=new THREE.PerspectiveCamera(50,W/H,.1,100);cam.position.set(3,2,4);cam.lookAt(0,0,0);
-  scene.add(new THREE.AmbientLight(0xffffff,.3));
-  const dl=new THREE.DirectionalLight(0xFF6B35,1.5);dl.position.set(4,4,2);scene.add(dl);
-  const dl2=new THREE.DirectionalLight(0x1A8FD6,1);dl2.position.set(-3,1,3);scene.add(dl2);
-  const tg=new THREE.Group();
-  const cab=new THREE.Mesh(new THREE.BoxGeometry(1,1.1,1.6),new THREE.MeshPhongMaterial({color:0x1A2A3A,shininess:60}));cab.position.set(-1.2,.45,0);tg.add(cab);
-  const wnd=new THREE.Mesh(new THREE.BoxGeometry(.05,.55,1),new THREE.MeshPhongMaterial({color:0x1A8FD6,transparent:true,opacity:.5,shininess:120}));wnd.position.set(-.65,.7,0);tg.add(wnd);
-  const cargo=new THREE.Mesh(new THREE.BoxGeometry(2.4,1.1,1.6),new THREE.MeshPhongMaterial({color:0x1A1A2E,shininess:30}));cargo.position.set(.8,.45,0);tg.add(cargo);
-  const stripe=new THREE.Mesh(new THREE.BoxGeometry(2.42,.12,1.62),new THREE.MeshPhongMaterial({color:0xFF6B35,emissive:0x6b2a00,shininess:60}));stripe.position.set(.8,.9,0);tg.add(stripe);
-  const ch=new THREE.Mesh(new THREE.BoxGeometry(4,.1,1.2),new THREE.MeshPhongMaterial({color:0x111827,shininess:20}));ch.position.set(0,-.02,0);tg.add(ch);
-  const wgeo=new THREE.CylinderGeometry(.32,.32,.22,16);
-  const wmat2=new THREE.MeshPhongMaterial({color:0x0a0a0a,shininess:40});
-  [[-1.4,-.25,.65],[-1.4,-.25,-.65],[.6,-.25,.65],[.6,-.25,-.65],[1.4,-.25,.65],[1.4,-.25,-.65]].forEach(p=>{const w=new THREE.Mesh(wgeo,wmat2);w.rotation.x=Math.PI/2;w.position.set(...p);tg.add(w)});
-  const sensor=new THREE.Mesh(new THREE.SphereGeometry(.08,8,8),new THREE.MeshPhongMaterial({color:0x00D4A0,emissive:0x00D4A0,emissiveIntensity:.8}));sensor.position.set(.8,1.05,.82);tg.add(sensor);
-  scene.add(tg);
-  const ground=new THREE.Mesh(new THREE.PlaneGeometry(12,12),new THREE.MeshPhongMaterial({color:0x1A2A3A,transparent:true,opacity:.1}));ground.rotation.x=-Math.PI/2;ground.position.y=-.58;scene.add(ground);
-  const opa=new Float32Array(120);for(let i=0;i<40;i++){const a=Math.random()*Math.PI*2,r=2+Math.random()*1.5;opa[i*3]=Math.cos(a)*r;opa[i*3+1]=(Math.random()-.5)*2;opa[i*3+2]=Math.sin(a)*r;}
-  const opg=new THREE.BufferGeometry();opg.setAttribute('position',new THREE.BufferAttribute(opa,3));
-  scene.add(new THREE.Points(opg,new THREE.PointsMaterial({color:0xFF6B35,size:.05,transparent:true,opacity:.4})));
-  let t=0;
-  (function anim(){requestAnimationFrame(anim);t+=.008;tg.rotation.y=Math.sin(t*.3)*.3;tg.position.y=Math.sin(t*.8)*.04;sensor.material.emissiveIntensity=.4+Math.sin(t*4)*.4;renderer.render(scene,cam)})();
-  window.addEventListener('resize',()=>{const W=cv.clientWidth,H=cv.clientHeight;cam.aspect=W/H;cam.updateProjectionMatrix();renderer.setSize(W,H)});
+  const outer=document.getElementById('flow-outer');
+  const flowSvg=document.getElementById('flow-svg');
+  if(!outer||!flowSvg)return;
+  const ns='http://www.w3.org/2000/svg';
+  const mk=(tag,a)=>{const e=document.createElementNS(ns,tag);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));return e};
+  const COLORS={
+    orange:{b:'rgba(255,107,53,.5)', bg:'rgba(255,107,53,.07)',g:'rgba(255,107,53,.22)',t:'#FF6B35'},
+    blue:  {b:'rgba(26,143,214,.5)', bg:'rgba(26,143,214,.07)',g:'rgba(26,143,214,.16)',t:'#1A8FD6'},
+    amber: {b:'rgba(245,158,11,.5)', bg:'rgba(245,158,11,.07)',g:'rgba(245,158,11,.16)',t:'#F59E0B'},
+    red:   {b:'rgba(239,68,68,.5)',  bg:'rgba(239,68,68,.07)', g:'rgba(239,68,68,.2)', t:'#EF4444'},
+    green: {b:'rgba(34,197,94,.55)',bg:'rgba(34,197,94,.08)', g:'rgba(34,197,94,.24)',t:'#22C55E'},
+    gold:  {b:'rgba(201,162,39,.45)',bg:'rgba(201,162,39,.06)',g:'rgba(201,162,39,.14)',t:'#C9A227'},
+  };
+  const STEPS=[
+    {ids:['fb1'],anchor:'fb1',score:85},
+    {ids:['fb2'],anchor:'fb2',score:85},
+    {ids:['fb3'],anchor:'fb3',score:68},
+    {ids:['fb4a','fb4b','fb4c','fb4d','fb4e'],anchor:'fb4-row',score:62},
+    {ids:['fb5'],anchor:'fb5',score:62},
+    {ids:['fb6'],anchor:'fb6',score:79},
+    {ids:['fb7'],anchor:'fb7',score:88},
+    {ids:['fb8'],anchor:'fb8',score:95},
+    {ids:['fb9'],anchor:'fb9',score:null},
+  ];
+  function hCol(p){if(!p)return'rgba(200,196,188,.2)';if(p<60)return'#EF4444';if(p<75)return'#F59E0B';if(p<90)return'#22C55E';return'#00D4A0';}
+  function fCol(p){if(!p)return'rgba(255,255,255,.06)';if(p<60)return'#EF4444';if(p<75)return'#F59E0B';if(p<90)return'#22C55E';return'#00D4A0';}
+  function updateHealth(p){
+    const ep=document.getElementById('fh-pct'),ef=document.getElementById('fh-fill');
+    if(ep){ep.textContent=p?p+'%':'—';ep.style.color=hCol(p);}
+    if(ef){ef.style.width=(p||0)+'%';ef.style.background=fCol(p);}
+  }
+  const litMap={};
+  function litBlock(el,color,active){
+    const c=COLORS[color];if(!c)return;
+    el.style.borderColor=c.b;el.style.background=c.bg;
+    el.style.boxShadow=active?'0 0 22px '+c.g+',0 0 44px '+c.g:'none';
+    const t=el.querySelector('.fb-t');if(t)t.style.color=c.t;
+    const s=el.querySelector('.fb-score');if(s)s.style.color=c.t;
+    const d=el.querySelector('.fb-d');if(d)d.style.color='rgba(200,196,188,.65)';
+    const n=el.querySelector('.fb-num');if(n)n.style.color='rgba(200,196,188,.4)';
+    el.querySelectorAll('.fb-chip').forEach(ch=>{ch.style.borderColor=c.b;ch.style.color=c.t;});
+    if(el.id==='fb8'){const wp=document.getElementById('fb8-pct');if(wp){wp.style.color=c.t;wp.style.textShadow=active?'0 0 60px '+c.g+',0 0 120px '+c.g:'none';}}
+    const tg2=el.querySelector('.fb-target');if(tg2)tg2.style.color='rgba(200,196,188,.5)';
+  }
+  function resetAll(){
+    document.querySelectorAll('.fb').forEach(el=>{
+      el.style.borderColor='rgba(255,255,255,.06)';el.style.background='transparent';el.style.boxShadow='none';
+      const t=el.querySelector('.fb-t');if(t)t.style.color='rgba(200,196,188,.28)';
+      const s=el.querySelector('.fb-score');if(s)s.style.color='rgba(200,196,188,.18)';
+      const d=el.querySelector('.fb-d');if(d)d.style.color='rgba(200,196,188,.16)';
+      const n=el.querySelector('.fb-num');if(n)n.style.color='rgba(200,196,188,.2)';
+      el.querySelectorAll('.fb-chip').forEach(ch=>{ch.style.borderColor='rgba(255,255,255,.06)';ch.style.color='rgba(200,196,188,.16)';});
+      const wp=document.getElementById('fb8-pct');if(wp)wp.style.color='rgba(200,196,188,.14)';
+      const tg2=el.querySelector('.fb-target');if(tg2)tg2.style.color='rgba(200,196,188,.16)';
+    });
+    Object.keys(litMap).forEach(k=>delete litMap[k]);
+    updateHealth(null);
+  }
+  function activateStep(idx){
+    const step=STEPS[idx];
+    Object.entries(litMap).forEach(([id,col])=>{const el=document.getElementById(id);if(el)litBlock(el,col,false);});
+    step.ids.forEach(id=>{const el=document.getElementById(id);if(!el)return;const col=el.dataset.color;litMap[id]=col;litBlock(el,col,true);});
+    if(step.score!==null)updateHealth(step.score);
+  }
+  let animId=0,rt2;
+  function setup(){
+    cancelAnimationFrame(animId);
+    while(flowSvg.firstChild)flowSvg.removeChild(flowSvg.firstChild);
+    const W=outer.offsetWidth,H=outer.offsetHeight;
+    flowSvg.setAttribute('viewBox','0 0 '+W+' '+H);
+    const or=outer.getBoundingClientRect();
+    function gc(id){const el=document.getElementById(id);if(!el)return{x:W/2,y:H/2};const r=el.getBoundingClientRect();return{x:r.left-or.left+r.width/2,y:r.top-or.top+r.height/2};}
+    const anchors=STEPS.map(s=>gc(s.anchor));
+    const defs=mk('defs',{});
+    const pf=mk('filter',{id:'fpglow',x:'-100%',y:'-100%',width:'300%',height:'300%'});
+    const pb=mk('feGaussianBlur',{stdDeviation:'3',result:'b'});
+    const pm=mk('feMerge',{});pm.appendChild(mk('feMergeNode',{in:'b'}));pm.appendChild(mk('feMergeNode',{in:'SourceGraphic'}));
+    pf.appendChild(pb);pf.appendChild(pm);defs.appendChild(pf);flowSvg.appendChild(defs);
+    const lineEls=[];
+    for(let i=0;i<anchors.length-1;i++){
+      const a=anchors[i],b=anchors[i+1];
+      const ln=mk('line',{x1:a.x,y1:a.y,x2:b.x,y2:b.y,stroke:'rgba(255,255,255,0.05)','stroke-width':'1'});
+      flowSvg.appendChild(ln);lineEls.push(ln);
+    }
+    const halo=mk('circle',{cx:anchors[0].x,cy:anchors[0].y,r:'10',fill:'none',stroke:'rgba(255,107,53,.18)','stroke-width':'1.5'});
+    const dot=mk('circle',{cx:anchors[0].x,cy:anchors[0].y,r:'5',fill:'#FF6B35',filter:'url(#fpglow)'});
+    flowSvg.appendChild(halo);flowSvg.appendChild(dot);
+    let seg=0,prog=0,paused=90,moving=false;
+    activateStep(0);
+    function tick(){
+      animId=requestAnimationFrame(tick);
+      if(paused>0){paused--;return;}
+      if(!moving){
+        if(seg>=anchors.length-1){cancelAnimationFrame(animId);setTimeout(()=>{resetAll();setTimeout(()=>{seg=0;prog=0;paused=90;moving=false;dot.setAttribute('cx',anchors[0].x);dot.setAttribute('cy',anchors[0].y);halo.setAttribute('cx',anchors[0].x);halo.setAttribute('cy',anchors[0].y);activateStep(0);animId=requestAnimationFrame(tick);},1000);},4000);return;}
+        moving=true;prog=0;
+        lineEls.forEach((l,i)=>l.setAttribute('stroke',i===seg?'rgba(255,107,53,.2)':'rgba(255,255,255,.05)'));
+      }
+      prog+=0.005;
+      if(prog>=1){
+        prog=1;moving=false;seg++;
+        dot.setAttribute('cx',anchors[seg].x);dot.setAttribute('cy',anchors[seg].y);
+        halo.setAttribute('cx',anchors[seg].x);halo.setAttribute('cy',anchors[seg].y);
+        activateStep(seg);paused=seg===7?210:90;
+        lineEls.forEach(l=>l.setAttribute('stroke','rgba(255,255,255,.05)'));return;
+      }
+      const a=anchors[seg],b=anchors[seg+1];
+      const cx=a.x+(b.x-a.x)*prog,cy=a.y+(b.y-a.y)*prog;
+      dot.setAttribute('cx',cx);dot.setAttribute('cy',cy);halo.setAttribute('cx',cx);halo.setAttribute('cy',cy);
+    }
+    animId=requestAnimationFrame(tick);
+    window.removeEventListener('resize',onResize);window.addEventListener('resize',onResize);
+  }
+  function onResize(){clearTimeout(rt2);rt2=setTimeout(()=>{cancelAnimationFrame(animId);resetAll();requestAnimationFrame(setup);},250);}
+  const obs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){obs.disconnect();requestAnimationFrame(()=>requestAnimationFrame(setup));}},{threshold:.1});
+  obs.observe(outer);
 })();
 </script>
 </body>
